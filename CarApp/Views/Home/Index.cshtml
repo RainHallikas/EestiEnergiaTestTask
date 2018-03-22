@@ -1,0 +1,27 @@
+﻿@model List<CarApp.Models.CarMark> 
+<h2>Car Marks</h2>
+<table class="table">
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Name
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Spare Parts", "SpareParts", new { id = item.Id }) 
+            </td>
+        </tr>
+    }
+</table>
