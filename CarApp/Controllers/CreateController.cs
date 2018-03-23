@@ -36,6 +36,8 @@ namespace CarApp.Controllers
         public CarMark SaveCarMark(CarMark c)
         {
             CarDbContext db = new CarDbContext();
+            var list = db.CarMarks.ToList();
+            if (list.Contains(list.Find(x => x.Name == c.Name))) return c;
             db.CarMarks.Add(c);
             db.SaveChanges();
             return c;
@@ -64,6 +66,8 @@ namespace CarApp.Controllers
         public SparePart SaveSparePart(SparePart s)
         {
             CarDbContext db = new CarDbContext();
+            var list = db.SpareParts.ToList();
+            if (list.Contains(list.Find(x => (x.Name == s.Name) && (x.Code == s.Code)))) return s;
             db.SpareParts.Add(s);
             db.SaveChanges();
             return s;
@@ -91,6 +95,8 @@ namespace CarApp.Controllers
         public CarSparePart SaveCarSparePart(CarSparePart cs)
         {
             CarDbContext db = new CarDbContext();
+            var list = db.CarSpareParts.ToList();
+            if (list.Contains(list.Find(x => (x.CarMarkId == cs.CarMarkId) && (x.SparePartId == cs.SparePartId)))) return cs;
             db.CarSpareParts.Add(cs);
             db.SaveChanges();
             return cs;

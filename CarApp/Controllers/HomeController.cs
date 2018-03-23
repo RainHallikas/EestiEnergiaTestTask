@@ -22,7 +22,7 @@ namespace CarApp.Controllers
             var carSpareParts = db.CarSpareParts.ToList();
             var spareParts = new List<SparePart>();
             foreach (var item in carSpareParts) {
-                if (item.SparePartId == id)
+                if (item.CarMarkId == id)
                 spareParts.Add(item.SparePart);
             }
             return View(spareParts);
